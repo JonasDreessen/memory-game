@@ -1,1 +1,75 @@
-/* No CSS *//*# sourceMappingURL=style.css.map */
+body {
+  background: #050061;
+  background: -webkit-gradient(linear, left top, right top, from(rgba(5, 0, 97, 0.878589)), color-stop(72%, rgba(34, 50, 147, 0.870186)), to(rgba(0, 19, 42, 0.718925)));
+  background: linear-gradient(90deg, rgba(5, 0, 97, 0.878589) 0%, rgba(34, 50, 147, 0.870186) 72%, rgba(0, 19, 42, 0.718925) 100%);
+}
+
+.page-header {
+  font-family: 'Times New Roman', Times, serif;
+  text-align: center;
+  margin: auto;
+}
+
+.page-header h2 {
+  text-align: center;
+}
+
+.row {
+  margin-bottom: 30px;
+}
+
+.card-img-top, .card-title {
+  visibility: hidden;
+}
+
+.card-fliped {
+  -webkit-animation: flip-scale-2-ver-left 0.5s linear both;
+  animation: flip-scale-2-ver-left 0.5s linear both;
+}
+
+.card-fliped .card-img-top, .card-fliped .card-title {
+  visibility: visible;
+}
+
+@-webkit-keyframes flip-scale-2-ver-left {
+  0% {
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+    transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+  }
+  50% {
+    -webkit-transform: translateX(-50%) rotateY(90deg) scale(2);
+    transform: translateX(-50%) rotateY(90deg) scale(2);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  100% {
+    -webkit-transform: translateX(-100%) rotateY(180deg) scale(1);
+    transform: translateX(-100%) rotateY(180deg) scale(1);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+  }
+}
+
+@keyframes flip-scale-2-ver-left {
+  0% {
+    -webkit-transform: translateX(0) rotateY(0) scale(1);
+    transform: translateX(0) rotateY(0) scale(1);
+    -webkit-transform-origin: 0% 50%;
+    transform-origin: 0% 50%;
+  }
+  50% {
+    -webkit-transform: translateX(-50%) rotateY(90deg) scale(2);
+    transform: translateX(-50%) rotateY(90deg) scale(2);
+    -webkit-transform-origin: 50% 50%;
+    transform-origin: 50% 50%;
+  }
+  100% {
+    -webkit-transform: translateX(-100%) rotateY(180deg) scale(1);
+    transform: translateX(-100%) rotateY(180deg) scale(1);
+    -webkit-transform-origin: 100% 50%;
+    transform-origin: 100% 50%;
+  }
+}
+/*# sourceMappingURL=style.css.map */
