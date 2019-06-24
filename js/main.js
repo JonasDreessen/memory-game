@@ -1,32 +1,73 @@
 const allCards = document.querySelectorAll(".card");
-let hasFlipedCard = false;
+let hasFlippedCard = false;
 let firstCard, secondCard;
+let blockTheGame = false;
 
-function flipCard (){
+
+
+function flipCard() {
+    // give a class .card-flipped to the clicked card
+    if (blockTheGame) return;
     this.classList.add('card-flipped');
 
-    if(!hasFlipedCard){
-        hasFlipedCard = true;
+    if (!hasFlippedCard) {
+        hasFlippedCard = true;
         firstCard = this;
-        
+
     } else {
-        hasFlipedCard = false;
-        secondCard = this;       
+        hasFlippedCard = false;
+        secondCard = this;
     }
-    if(firstCard.dataset.framework === secondCard.dataset.framework) {
-        firstCard.removeEventlistener("click",flipCard);
-        secondCard.removeEventlistener("click",flipCard);
+    matchMaker();
+}
+
+function matchMaker() {
+    // compare the dataset.framework of the first and second card.
+    if (firstCard.dataset.framework ===
+        secondCard.dataset.framework) {
+        stopFlipCards();
     } else {
-        setTimeout(flipBack,500);
+        blockTheGame = true;
+        flipBack();
     }
 }
 
-function flipBack(){
-document.querySelectorAll(".card-flipped").forEach(element => { element.classList.remove("card-flipped");
-})
+function flipBack() {
+    setTimeout(flipBackForReal, 1500);
+    // remove the added class .card-flipped
+    function flipBackForReal(){
+        document.querySelectorAll(".card-flipped").forEach(element => {
+            element.classList.remove("card-flipped");
+        })
+    }
+    
+    
+    blockTheGame = false;
 };
 
-allCards.forEach(card => card.addEventListener("click",flipCard));
+function resetBoard(){
+    hasFlippedCard = false;
+    blockTheGame = false;
+    firstCard = null;
+    secondCard = null;
+    
+}
+function stopFlipCards() {
+    // remove the eventlistener of the card so it stays visible.
+    firstCard.removeEventListener("click", flipCard);
+    secondCard.removeEventListener("click", flipCard);
+    setTimeout(resetBoard, 1500);
+    
+}
+
+(function randomPosition(){
+    allCards.forEach(allCards => {
+        let randomNumber = Math.floor(Math.random()*9);
+        allCards.style.order = randomNumber;
+    });
+})();
+
+allCards.forEach(allCards => allCards.addEventListener("click", flipCard));
 
 
 
