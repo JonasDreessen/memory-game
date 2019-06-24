@@ -22,12 +22,12 @@ body {
   visibility: hidden;
 }
 
-.card-fliped {
+.card-flipped {
   -webkit-animation: flip-scale-2-ver-left 0.5s linear both;
   animation: flip-scale-2-ver-left 0.5s linear both;
 }
 
-.card-fliped .card-img-top, .card-fliped .card-title {
+.card-flipped .card-img-top, .card-flipped .card-title {
   visibility: visible;
 }
 
