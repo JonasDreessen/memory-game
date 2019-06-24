@@ -35,34 +35,34 @@ function matchMaker() {
 function flipBack() {
     setTimeout(flipBackForReal, 1500);
     // remove the added class .card-flipped
-    function flipBackForReal(){
+    function flipBackForReal() {
         document.querySelectorAll(".card-flipped").forEach(element => {
             element.classList.remove("card-flipped");
         })
     }
-    
-    
+
+
     blockTheGame = false;
 };
 
-function resetBoard(){
-    hasFlippedCard = false;
-    blockTheGame = false;
-    firstCard = null;
-    secondCard = null;
-    
-}
 function stopFlipCards() {
     // remove the eventlistener of the card so it stays visible.
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
     setTimeout(resetBoard, 1500);
-    
 }
 
-(function randomPosition(){
+function resetBoard() {
+    hasFlippedCard = false;
+    blockTheGame = false;
+    firstCard = null;
+    secondCard = null;
+}
+
+
+(function randomPosition() {
     allCards.forEach(allCards => {
-        let randomNumber = Math.floor(Math.random()*9);
+        let randomNumber = Math.floor(Math.random() * 9);
         allCards.style.order = randomNumber;
     });
 })();
