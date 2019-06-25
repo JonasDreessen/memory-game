@@ -32,6 +32,14 @@ body {
     }
 }
 
+.permanentCardFlip {
+        -webkit-animation: flip-scale-2-ver-left 0.5s linear both;
+        animation: flip-scale-2-ver-left 0.5s linear both;
+        .card-img-top, .card-title {
+                visibility: visible;
+        }
+    }
+
 @-webkit-keyframes flip-scale-2-ver-left {
     0% {
       -webkit-transform: translateX(0) rotateY(0) scale(1);

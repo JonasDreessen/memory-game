@@ -1,13 +1,9 @@
 const allCards = document.querySelectorAll(".card");
 let hasFlippedCard = false;
 let firstCard, secondCard;
-let blockTheGame = false;
-
-
 
 function flipCard() {
     // give a class .card-flipped to the clicked card
-    if (blockTheGame) return;
     this.classList.add('card-flipped');
 
     if (!hasFlippedCard) {
@@ -27,7 +23,6 @@ function matchMaker() {
         secondCard.dataset.framework) {
         stopFlipCards();
     } else {
-        blockTheGame = true;
         flipBack();
     }
 }
@@ -42,19 +37,24 @@ function flipBack() {
     }
 
 
-    blockTheGame = false;
+
 };
 
 function stopFlipCards() {
     // remove the eventlistener of the card so it stays visible.
     firstCard.removeEventListener("click", flipCard);
     secondCard.removeEventListener("click", flipCard);
+    function giveExtraFlipClass() {
+        document.querySelectorAll(".card-flipped").forEach(element => {
+            element.classList.add("permanentCardFlip");
+        })
+    }
+    giveExtraFlipClass();
     setTimeout(resetBoard, 1500);
 }
 
 function resetBoard() {
     hasFlippedCard = false;
-    blockTheGame = false;
     firstCard = null;
     secondCard = null;
 }
